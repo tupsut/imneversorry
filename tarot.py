@@ -73,13 +73,13 @@ class Tarot:
         for datum in self.card_data:
             name = datum[0].lower()
             if name in text:
-                for keyword in ["reversed", "ylösalaisin", "väärinpäin"]:
-                    if keyword + " " + name in text or name + " " + keyword in text:
-                        rev_exp = datum[2]
-                        explanations += "Reversed " + name + ": " + rev_exp + "\n\n"
-                        continue
-                explanation = datum[1]
-                explanations += name + ": " + explanation + "\n\n"
+                for rev_keyword in ["reversed", "ylösalaisin", "väärinpäin"]:
+                    if rev_keyword + " " + name in text or name + " " + rev_keyword in text:
+                        explanation = datum[2]
+                        explanations += "Reversed " + name + ": " + explanation + "\n\n"
+                    else:
+                        explanation = datum[1]
+                        explanations += name + ": " + explanation + "\n\n"
 
         return explanations
 
